@@ -9,13 +9,12 @@ if (process.argv[2]) {
 }
 
 /**
- * @exports
  * @function
  * @async
  * @description Parses and retrieves tables from the provided SecureSWF XML
  * @param {string} map - The SecureSWF XML map to parse
  */
-export async function getTables(map) {
+async function getTables(map) {
   const xml = await readFile(map, 'utf8');
   const json = await parseStringPromise(xml);
   const tables = { full: {}, oldToId: {}, newToId: {} };
@@ -42,9 +41,9 @@ export async function getTables(map) {
  * @async
  * @description Looks through the parsed tables
  * @param {string} value - The value to look up
- * @returns {{New: string, Old:string}} The looked up object
+ * @returns {{New:string, Old:string}} The looked up object
  */
-export async function lookupTable(value) {
+async function lookupTable(value) {
   const full = JSON.parse(await readFile('decrypted_secure_map(table_full).json'));
   const table = (value[0] === '§' && value[value.length - 1] === '§') //? Obfuscated or not
     ? JSON.parse(await readFile('decrypted_secure_map(table_new_to_id).json'))
