@@ -38,7 +38,9 @@ function getDeobfuscatedScriptInfo(obfuscatedScriptInfo) {
     .replaceAll('?', '\\?').replaceAll('[', '\\[');
   const matcher = new RegExp(payload, 'gi');
 
-  const className = obfuscatedScriptInfo.className.startsWith('§') ? Birb.lookup(obfuscatedScriptInfo.className) : obfuscatedScriptInfo.className;
+  const className = obfuscatedScriptInfo.className.startsWith('§')
+    ? Birb.lookup(obfuscatedScriptInfo.className)
+    : obfuscatedScriptInfo.className;
   const scriptName = className;
   const scriptFullName = `${scriptName}.as`;
   const scriptContent = obfuscatedScriptInfo.scriptContent.replace(matcher, (matched) => Birb.lookup(matched));
