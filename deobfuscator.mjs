@@ -38,7 +38,7 @@ function getDeobfuscatedScriptInfo(obfuscatedScriptInfo) {
     .replaceAll('?', '\\?').replaceAll('[', '\\[');
   const matcher = new RegExp(payload, 'gi');
 
-  const className = Birb.lookup(obfuscatedScriptInfo.className); //? Feels like we're doing this double? No
+  const className = obfuscatedScriptInfo.className.startsWith('§') ? Birb.lookup(obfuscatedScriptInfo.className) : obfuscatedScriptInfo.className;
   const scriptName = className;
   const scriptFullName = `${scriptName}.as`;
   const scriptContent = obfuscatedScriptInfo.scriptContent.replace(matcher, (matched) => Birb.lookup(matched));
@@ -63,3 +63,10 @@ async function deobfuscateScripts() {
     await writeFile(`deobfuscated/${deobfuscatedScriptInfo.scriptFullName}`, deobfuscatedScriptInfo.scriptContent);
   }
 }
+
+async function run() {
+  await Birb.init();
+  await deobfuscateScripts();
+}
+
+run();
