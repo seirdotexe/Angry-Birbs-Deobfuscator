@@ -55,14 +55,17 @@ function getDeobfuscatedScriptInfo(obfuscatedScriptInfo) {
  * @description Deobfuscates all scripts inside said folder and saves it
  */
 async function deobfuscateScripts() {
-  const scriptNames = await readdir('scripts');
+  const scripts = await readdir('scripts');
 
-  for (let i = 0; i < scriptNames.length; i++) {
-    // Todo: Deobfuscate folder names and support folder structure
-    const obfuscatedScriptInfo = await getObfuscatedScriptInfo(scriptNames[i]);
-    const deobfuscatedScriptInfo = getDeobfuscatedScriptInfo(obfuscatedScriptInfo);
+  for (let i = 0; i < scripts.length; i++) {
+    if (scripts[i].endsWith('.as')) {
+      const obfuscatedScriptInfo = await getObfuscatedScriptInfo(scripts[i]);
+      const deobfuscatedScriptInfo = getDeobfuscatedScriptInfo(obfuscatedScriptInfo);
 
-    await writeFile(`deobfuscated/${deobfuscatedScriptInfo.scriptFullName}`, deobfuscatedScriptInfo.scriptContent);
+      await writeFile(`deobfuscated/${deobfuscatedScriptInfo.scriptFullName}`, deobfuscatedScriptInfo.scriptContent);
+    } else {
+      // Todo: Support folders
+    }
   }
 }
 
