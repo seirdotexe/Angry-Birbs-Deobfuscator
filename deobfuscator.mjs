@@ -1,6 +1,6 @@
 'use strict';
 
-import { writeFile, readFile, readdir } from 'fs/promises';
+import { writeFile, readFile, readdir, mkdir } from 'fs/promises';
 import { Birb } from './birb.mjs';
 
 /**
@@ -53,18 +53,23 @@ function getDeobfuscatedScriptInfo(obfuscatedScriptInfo) {
  * @function
  * @async
  * @description Deobfuscates all scripts inside said folder and saves it
+ * @param {string} [dir='scripts'] - The directory to scan for obfuscated scripts
  */
-async function deobfuscateScripts() {
-  const scripts = await readdir('scripts');
+async function deobfuscateScripts(dir = 'scripts') {
+  const scripts = await readdir(dir);
 
   for (let i = 0; i < scripts.length; i++) {
-    if (scripts[i].endsWith('.as')) {
-      const obfuscatedScriptInfo = await getObfuscatedScriptInfo(scripts[i]);
+    const scriptOrDir = scripts[i];
+
+    if (scriptOrDir.startsWith('§') && scriptOrDir.endsWith('§')) {
+      // Todo: Support folders
+    } else if (scriptOrDir.endsWith('.as')) {
+      const obfuscatedScriptInfo = await getObfuscatedScriptInfo(scriptOrDir);
       const deobfuscatedScriptInfo = getDeobfuscatedScriptInfo(obfuscatedScriptInfo);
 
       await writeFile(`deobfuscated/${deobfuscatedScriptInfo.scriptFullName}`, deobfuscatedScriptInfo.scriptContent);
     } else {
-      // Todo: Support folders
+      console.log(`Skipping ${scriptOrDir} as it's not a valid obfuscated script/dir.`);
     }
   }
 }
