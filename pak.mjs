@@ -19,7 +19,7 @@ if (process.argv[2] && process.argv[3]) {
  */
 async function decryptPackage(file, seed) {
   if (seed !== 185 && seed !== 4125) {
-    console.log('Invalid or unknown seed. Try 4125 or 185.');
+    return console.log('Invalid or unknown seed. Try 4125 or 185.');
   }
 
   const buffer = await readFile(file);
