@@ -1,6 +1,6 @@
 # Angry Birbs Deobfuscator
 
-All the tools you need to deobfuscate [Angry Birds Breakfast 1](http://www.mediafire.com/file/632g9ek4hwatsrw/Angry+Birds+Breakfast+1.exe) and to create a fully deobfuscated SWF.
+All the tools you need to deobfuscate Angry Birds Flash and to create a fully deobfuscated SWF.
 
 # How is this possible?
 
@@ -8,4 +8,4 @@ The SWF is obfuscated with a tool called [SecureSWF](http://www.kindi.com/). Whe
 
 # Copyright
 
-I don't own the Mediafire link, nor do I own the XML file that Rovio left there.
+I don't own the XML file that Rovio in Angry Birds Breakfast 1.
