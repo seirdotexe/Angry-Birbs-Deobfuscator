@@ -15,7 +15,7 @@ export class RND {
   /**
    * @static
    * @private
-   * @description The modulus
+   * @description The int32 modulus
    * @type {number}
    */
   static #mod = 2147483647;
