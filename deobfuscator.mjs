@@ -4,9 +4,8 @@ import { writeFile, readFile, readdir, mkdir } from 'fs/promises';
 import { Birb } from './birb.mjs';
 
 /**
- * @exports
- * @function
  * @async
+ * @function
  * @description Retrieves information of an obfuscated script
  * @param {string} scriptFullName - The full script name
  * @returns {{scriptName:string, className:string, scriptContent:string, obfuscatedNames:string[]}} Obfuscated script info
@@ -24,7 +23,6 @@ async function getObfuscatedScriptInfo(scriptFullName) {
 }
 
 /**
- * @exports
  * @function
  * @description Retrieves information of an obfuscated script, and eventually, the deobfuscated script
  * @param {{scriptName:string, className:string, scriptContent:string, obfuscatedNames:string[]}} obfuscatedScriptInfo - Obfuscated script info
@@ -49,9 +47,8 @@ function getDeobfuscatedScriptInfo(obfuscatedScriptInfo) {
 }
 
 /**
- * @exports
- * @function
  * @async
+ * @function
  * @description Deobfuscates all scripts inside said folder and saves it
  * @param {string} [dir='scripts'] - The directory to scan for obfuscated scripts
  */
@@ -74,6 +71,7 @@ async function deobfuscateScripts(dir = 'scripts') {
   }
 }
 
+//? Example
 async function run() {
   await Birb.init();
   await deobfuscateScripts();
