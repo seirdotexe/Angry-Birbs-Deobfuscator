@@ -16,10 +16,11 @@ if (process.argv[2] && process.argv[3]) {
  * @description Decrypts a .pak file
  * @param {string} file - The path of the .pak file
  * @param {number} seed - The seed of the .pak file
+ * @throws {TypeError} The seed must be valid
  */
 async function decryptPackage(file, seed) {
   if (seed !== 185 && seed !== 4125) {
-    return console.log('Invalid or unknown seed. Try 4125 or 185.');
+    throw new Error('Invalid or unknown seed. Try 4125 or 185.');
   }
 
   const buffer = await readFile(file);

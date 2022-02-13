@@ -71,10 +71,5 @@ async function deobfuscateScripts(dir = 'scripts') {
   }
 }
 
-//? Example
-async function run() {
-  await Birb.init();
-  await deobfuscateScripts();
-}
-
-run();
+await Birb.init();
+await deobfuscateScripts();
