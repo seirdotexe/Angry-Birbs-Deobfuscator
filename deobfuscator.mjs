@@ -60,7 +60,7 @@ async function deobfuscateScripts(dir = 'scripts') {
 
     if (scriptOrDir.startsWith('§') && scriptOrDir.endsWith('§')) {
       // Todo: Support folders
-    } else if (scriptOrDir.endsWith('.as')) {
+    } else if (scriptOrDir.startsWith('§') && scriptOrDir.endsWith('§.as')) {
       const obfuscatedScriptInfo = await getObfuscatedScriptInfo(scriptOrDir);
       const deobfuscatedScriptInfo = getDeobfuscatedScriptInfo(obfuscatedScriptInfo);
 
