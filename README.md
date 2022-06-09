@@ -8,4 +8,4 @@ The SWF is obfuscated with a tool called [SecureSWF](http://www.kindi.com/). Whe
 
 # Copyright
 
-I don't own the XML file that Rovio in Angry Birds Breakfast 1.
+I don't own the XML file that Rovio made for Angry Birds Breakfast 1.
