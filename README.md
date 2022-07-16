@@ -1,5 +1,7 @@
 # Angry Birbs Deobfuscator
 
+**Note: This isn't finished nor maintained anymore. Want to continue it? Please fork!.**
+
 All the tools you need to deobfuscate Angry Birds Flash and to create a fully deobfuscated SWF.
 
 # How is this possible?
